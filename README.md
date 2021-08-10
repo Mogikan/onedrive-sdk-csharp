@@ -8,9 +8,7 @@ project!
 The OneDrive SDK is built as a Portable Class Library and targets the following
 frameworks: 
 
-* .NET 4.5.1 
-* .NET for Windows Store apps 
-* Windows Phone 8.1 and higher
+* .NET Standard 2.0
 
 Azure Active Directory authentication is available for:
 
