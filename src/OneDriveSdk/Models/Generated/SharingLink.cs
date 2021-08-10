@@ -12,50 +12,50 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type SharingLink.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<SharingLink>))]
     public partial class SharingLink
     {
     
         /// <summary>
         /// Gets or sets application.
         /// </summary>
-        [DataMember(Name = "application", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("application")]
         public Identity Application { get; set; }
     
         /// <summary>
         /// Gets or sets type.
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     
         /// <summary>
         /// Gets or sets webUrl.
         /// </summary>
-        [DataMember(Name = "webUrl", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("webUrl")]
         public string WebUrl { get; set; }
     
         /// <summary>
         /// Gets or sets webHtml.
         /// </summary>
-        [DataMember(Name = "webHtml", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("webHtml")]
         public string WebHtml { get; set; }
     
         /// <summary>
         /// Gets or sets configuratorUrl.
         /// </summary>
-        [DataMember(Name = "configuratorUrl", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("configuratorUrl")]
         public string ConfiguratorUrl { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

@@ -9,12 +9,12 @@ namespace Microsoft.OneDrive.Sdk
 {
     using System;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The interface IOneDriveDrivesCollectionPage.
     /// </summary>
-    [JsonConverter(typeof(InterfaceConverter<OneDriveDrivesCollectionPage>))]
+    [InterfaceConverter(typeof(InterfaceConverter<OneDriveDrivesCollectionPage>))]
     public interface IOneDriveDrivesCollectionPage : ICollectionPage<Drive>
     {
         /// <summary>

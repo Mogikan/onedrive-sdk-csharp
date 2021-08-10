@@ -29,8 +29,7 @@ namespace Microsoft.OneDrive.Sdk
             IBaseClient client,
             IEnumerable<Option> options)
             : base(requestUrl, client, options)
-        {
-            this.SdkVersionHeaderPrefix = "onedrive";
+        {            
         }
         
         /// <summary>
@@ -52,7 +51,7 @@ namespace Microsoft.OneDrive.Sdk
         public System.Threading.Tasks.Task<Item> AddAsync(Item item, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "POST";
+            this.Method = HttpMethods.POST;
             return this.SendAsync<Item>(item, cancellationToken);
         }
 
@@ -72,7 +71,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The collection page.</returns>
         public async System.Threading.Tasks.Task<IDriveSharedCollectionPage> GetAsync(CancellationToken cancellationToken)
         {
-            this.Method = "GET";
+            this.Method = HttpMethods.GET;
             var response = await this.SendAsync<DriveSharedCollectionResponse>(null, cancellationToken).ConfigureAwait(false);
             if (response != null && response.Value != null && response.Value.CurrentPage != null)
             {

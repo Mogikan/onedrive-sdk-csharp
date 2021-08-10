@@ -12,38 +12,38 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Identity.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Identity>))]
     public partial class Identity
     {
     
         /// <summary>
         /// Gets or sets displayName.
         /// </summary>
-        [DataMember(Name = "displayName", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("displayName")]
         public string DisplayName { get; set; }
     
         /// <summary>
         /// Gets or sets id.
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
     
         /// <summary>
         /// Gets or sets thumbnails.
         /// </summary>
-        [DataMember(Name = "thumbnails", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("thumbnails")]
         public ThumbnailSet Thumbnails { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

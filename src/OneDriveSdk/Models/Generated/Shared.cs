@@ -12,38 +12,38 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Shared.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Shared>))]
     public partial class Shared
     {
     
         /// <summary>
         /// Gets or sets effectiveRoles.
         /// </summary>
-        [DataMember(Name = "effectiveRoles", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("effectiveRoles")]
         public IEnumerable<string> EffectiveRoles { get; set; }
     
         /// <summary>
         /// Gets or sets owner.
         /// </summary>
-        [DataMember(Name = "owner", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("owner")]
         public IdentitySet Owner { get; set; }
     
         /// <summary>
         /// Gets or sets scope.
         /// </summary>
-        [DataMember(Name = "scope", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("scope")]
         public string Scope { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

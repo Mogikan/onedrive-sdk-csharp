@@ -12,68 +12,68 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Photo.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Photo>))]
     public partial class Photo
     {
     
         /// <summary>
         /// Gets or sets cameraMake.
         /// </summary>
-        [DataMember(Name = "cameraMake", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("cameraMake")]
         public string CameraMake { get; set; }
     
         /// <summary>
         /// Gets or sets cameraModel.
         /// </summary>
-        [DataMember(Name = "cameraModel", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("cameraModel")]
         public string CameraModel { get; set; }
     
         /// <summary>
         /// Gets or sets exposureDenominator.
         /// </summary>
-        [DataMember(Name = "exposureDenominator", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("exposureDenominator")]
         public double? ExposureDenominator { get; set; }
     
         /// <summary>
         /// Gets or sets exposureNumerator.
         /// </summary>
-        [DataMember(Name = "exposureNumerator", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("exposureNumerator")]
         public double? ExposureNumerator { get; set; }
     
         /// <summary>
         /// Gets or sets focalLength.
         /// </summary>
-        [DataMember(Name = "focalLength", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("focalLength")]
         public double? FocalLength { get; set; }
     
         /// <summary>
         /// Gets or sets fNumber.
         /// </summary>
-        [DataMember(Name = "fNumber", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("fNumber")]
         public double? FNumber { get; set; }
     
         /// <summary>
         /// Gets or sets takenDateTime.
         /// </summary>
-        [DataMember(Name = "takenDateTime", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("takenDateTime")]
         public DateTimeOffset? TakenDateTime { get; set; }
     
         /// <summary>
         /// Gets or sets iso.
         /// </summary>
-        [DataMember(Name = "iso", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("iso")]
         public Int32? Iso { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

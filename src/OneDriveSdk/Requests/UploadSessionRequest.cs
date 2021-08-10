@@ -1,4 +1,4 @@
-﻿// ------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
 //  Copyright (c) Microsoft Corporation.  All Rights Reserved.  Licensed under the MIT License.  See License in the project root for license information.
 // ------------------------------------------------------------------------------
 
@@ -35,7 +35,7 @@ namespace Microsoft.OneDrive.Sdk.Helpers
         /// <returns>The task to await.</returns>
         public async Task DeleteAsync(CancellationToken cancellationToken)
         {
-            this.Method = "DELETE";
+            this.Method = HttpMethods.DELETE;
             await this.SendAsync<UploadSession>(null, cancellationToken).ConfigureAwait(false);
         }
 
@@ -55,7 +55,7 @@ namespace Microsoft.OneDrive.Sdk.Helpers
         /// <returns>The Item.</returns>
         public async Task<UploadSession> GetAsync(CancellationToken cancellationToken)
         {
-            this.Method = "GET";
+            this.Method = HttpMethods.GET;
             var retrievedEntity = await this.SendAsync<UploadSession>(null, cancellationToken).ConfigureAwait(false);
             return retrievedEntity;
         }

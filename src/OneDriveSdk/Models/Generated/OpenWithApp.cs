@@ -12,50 +12,50 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type OpenWithApp.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<OpenWithApp>))]
     public partial class OpenWithApp
     {
     
         /// <summary>
         /// Gets or sets app.
         /// </summary>
-        [DataMember(Name = "app", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("app")]
         public Identity App { get; set; }
     
         /// <summary>
         /// Gets or sets viewUrl.
         /// </summary>
-        [DataMember(Name = "viewUrl", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("viewUrl")]
         public string ViewUrl { get; set; }
     
         /// <summary>
         /// Gets or sets editUrl.
         /// </summary>
-        [DataMember(Name = "editUrl", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("editUrl")]
         public string EditUrl { get; set; }
     
         /// <summary>
         /// Gets or sets viewPostParameters.
         /// </summary>
-        [DataMember(Name = "viewPostParameters", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("viewPostParameters")]
         public string ViewPostParameters { get; set; }
     
         /// <summary>
         /// Gets or sets editPostParameters.
         /// </summary>
-        [DataMember(Name = "editPostParameters", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("editPostParameters")]
         public string EditPostParameters { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

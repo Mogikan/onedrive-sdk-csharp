@@ -28,7 +28,7 @@ namespace Microsoft.OneDrive.Sdk
             IEnumerable<Option> options)
             : base(requestUrl, client, options)
         {
-            this.Method = "GET";
+            this.Method = HttpMethods.GET;
         }
 
         /// <summary>

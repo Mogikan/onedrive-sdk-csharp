@@ -12,38 +12,38 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Share.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Share>))]
     public partial class Share
     {
     
         /// <summary>
         /// Gets or sets id.
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
     
         /// <summary>
         /// Gets or sets name.
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     
         /// <summary>
         /// Gets or sets owner.
         /// </summary>
-        [DataMember(Name = "owner", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("owner")]
         public IdentitySet Owner { get; set; }
     
         /// <summary>
         /// Gets or sets items.
         /// </summary>
-        [DataMember(Name = "items", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("items")]
         public IShareItemsCollectionPage Items { get; set; }
     
         /// <summary>
@@ -55,7 +55,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true, WriteData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

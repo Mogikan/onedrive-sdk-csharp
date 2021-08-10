@@ -12,44 +12,44 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Video.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Video>))]
     public partial class Video
     {
     
         /// <summary>
         /// Gets or sets bitrate.
         /// </summary>
-        [DataMember(Name = "bitrate", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("bitrate")]
         public Int32? Bitrate { get; set; }
     
         /// <summary>
         /// Gets or sets duration.
         /// </summary>
-        [DataMember(Name = "duration", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("duration")]
         public Int64? Duration { get; set; }
     
         /// <summary>
         /// Gets or sets height.
         /// </summary>
-        [DataMember(Name = "height", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("height")]
         public Int32? Height { get; set; }
     
         /// <summary>
         /// Gets or sets width.
         /// </summary>
-        [DataMember(Name = "width", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("width")]
         public Int32? Width { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

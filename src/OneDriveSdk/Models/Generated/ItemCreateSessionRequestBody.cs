@@ -11,6 +11,7 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
 
     /// <summary>
@@ -23,7 +24,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <summary>
         /// Gets or sets Item.
         /// </summary>
-        [DataMember(Name = "item", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("item")]
         public ChunkedUploadSessionDescriptor Item { get; set; }
     
     }

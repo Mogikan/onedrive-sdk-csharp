@@ -49,7 +49,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The stream.</returns>
         public System.Threading.Tasks.Task<Stream> GetAsync(CancellationToken cancellationToken, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead)
         {
-            this.Method = "GET";
+            this.Method = HttpMethods.GET;
             return this.SendStreamRequestAsync(null, cancellationToken, completionOption);
         }
     
@@ -75,7 +75,7 @@ namespace Microsoft.OneDrive.Sdk
         public System.Threading.Tasks.Task<T> PutAsync<T>(Stream content, CancellationToken cancellationToken, HttpCompletionOption completionOption = HttpCompletionOption.ResponseContentRead) where T : Thumbnail
         {
             this.ContentType = "application/octet-stream";
-            this.Method = "PUT";
+            this.Method = HttpMethods.PUT;
             return this.SendAsync<T>(content, cancellationToken, completionOption);
         }
     

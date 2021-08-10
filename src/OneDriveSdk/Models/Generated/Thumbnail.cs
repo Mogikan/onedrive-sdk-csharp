@@ -12,44 +12,44 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Thumbnail.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Thumbnail>))]
     public partial class Thumbnail
     {
     
         /// <summary>
         /// Gets or sets content.
         /// </summary>
-        [DataMember(Name = "content", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("content")]
         public Stream Content { get; set; }
     
         /// <summary>
         /// Gets or sets height.
         /// </summary>
-        [DataMember(Name = "height", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("height")]
         public Int32? Height { get; set; }
     
         /// <summary>
         /// Gets or sets url.
         /// </summary>
-        [DataMember(Name = "url", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("url")]
         public string Url { get; set; }
     
         /// <summary>
         /// Gets or sets width.
         /// </summary>
-        [DataMember(Name = "width", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("width")]
         public Int32? Width { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

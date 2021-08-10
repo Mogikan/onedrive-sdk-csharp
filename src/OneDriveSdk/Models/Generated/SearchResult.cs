@@ -12,26 +12,26 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type SearchResult.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<SearchResult>))]
     public partial class SearchResult
     {
     
         /// <summary>
         /// Gets or sets onClickTelemetryUrl.
         /// </summary>
-        [DataMember(Name = "onClickTelemetryUrl", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("onClickTelemetryUrl")]
         public string OnClickTelemetryUrl { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

@@ -12,38 +12,38 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Location.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Location>))]
     public partial class Location
     {
     
         /// <summary>
         /// Gets or sets altitude.
         /// </summary>
-        [DataMember(Name = "altitude", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("altitude")]
         public double? Altitude { get; set; }
     
         /// <summary>
         /// Gets or sets latitude.
         /// </summary>
-        [DataMember(Name = "latitude", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("latitude")]
         public double? Latitude { get; set; }
     
         /// <summary>
         /// Gets or sets longitude.
         /// </summary>
-        [DataMember(Name = "longitude", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("longitude")]
         public double? Longitude { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

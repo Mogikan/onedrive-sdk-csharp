@@ -12,37 +12,37 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type SharingInvitation.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Recipient>))]
     public partial class Recipient
     { 
         /// <summary>
         /// Gets or sets email.
         /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// Gets or sets alias.
         /// </summary>
-        [DataMember(Name = "alias", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("alias")]
         public string Alias { get; set; }
 
         /// <summary>
         /// Gets or sets objectId.
         /// </summary>
-        [DataMember(Name = "objectId", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("objectId")]
         public string ObjectId { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

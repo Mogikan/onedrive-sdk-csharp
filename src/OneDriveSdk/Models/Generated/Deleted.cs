@@ -11,27 +11,27 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The type Deleted.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Deleted>))]
     public partial class Deleted
     {
     
         /// <summary>
         /// Gets or sets state.
         /// </summary>
-        [DataMember(Name = "state", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("state")]
         public string State { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

@@ -11,6 +11,7 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
 
     /// <summary>
@@ -19,19 +20,19 @@ namespace Microsoft.OneDrive.Sdk
     [DataContract]
     public partial class ItemInviteRequestBody
     {   
-        [DataMember(Name = "requireSignIn", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("requireSignIn")]
         public bool RequireSignIn { get; set; }
 
-        [DataMember(Name = "sendInvitation", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("sendInvitation")]
         public bool SendInvitation { get; set; }
 
-        [DataMember(Name = "roles", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("roles")]
         public string[] Roles { get; set; }
 
-        [DataMember(Name = "recipients", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("recipients")]
         public Recipient[] Recipients { get; set; }
 
-        [DataMember(Name = "message", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("message")]
         public string Message { get; set; }
     }
 }

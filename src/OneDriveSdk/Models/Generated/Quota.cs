@@ -12,50 +12,50 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Quota.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Quota>))]
     public partial class Quota
     {
     
         /// <summary>
         /// Gets or sets deleted.
         /// </summary>
-        [DataMember(Name = "deleted", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("deleted")]
         public Int64? Deleted { get; set; }
     
         /// <summary>
         /// Gets or sets remaining.
         /// </summary>
-        [DataMember(Name = "remaining", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("remaining")]
         public Int64? Remaining { get; set; }
     
         /// <summary>
         /// Gets or sets state.
         /// </summary>
-        [DataMember(Name = "state", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("state")]
         public string State { get; set; }
     
         /// <summary>
         /// Gets or sets total.
         /// </summary>
-        [DataMember(Name = "total", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("total")]
         public Int64? Total { get; set; }
     
         /// <summary>
         /// Gets or sets used.
         /// </summary>
-        [DataMember(Name = "used", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("used")]
         public Int64? Used { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

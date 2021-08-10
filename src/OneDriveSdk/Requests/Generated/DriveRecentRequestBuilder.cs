@@ -27,7 +27,8 @@ namespace Microsoft.OneDrive.Sdk
             IBaseClient client)
             : base(requestUrl, client)
         {
-            this.passParametersInQueryString = true;
+            //this.passParametersInQueryString = true;
+            this.SetFunctionParameters();
         }
 
         /// <summary>

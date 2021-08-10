@@ -11,6 +11,7 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
 
     /// <summary>
@@ -23,7 +24,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <summary>
         /// Gets or sets Type.
         /// </summary>
-        [DataMember(Name = "type", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("type")]
         public string Type { get; set; }
     
     }

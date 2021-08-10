@@ -11,33 +11,33 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The type FileSystemInfo.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<FileSystemInfo>))]
     public partial class FileSystemInfo
     {
     
         /// <summary>
         /// Gets or sets createdDateTime.
         /// </summary>
-        [DataMember(Name = "createdDateTime", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("createdDateTime")]
         public DateTimeOffset? CreatedDateTime { get; set; }
     
         /// <summary>
         /// Gets or sets lastModifiedDateTime.
         /// </summary>
-        [DataMember(Name = "lastModifiedDateTime", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("lastModifiedDateTime")]
         public DateTimeOffset? LastModifiedDateTime { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

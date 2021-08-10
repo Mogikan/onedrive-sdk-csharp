@@ -28,7 +28,7 @@ namespace Microsoft.OneDrive.Sdk
             IEnumerable<Option> options)
             : base(requestUrl, client, options)
         {
-            this.Method = "POST";
+            this.Method = HttpMethods.POST;
             this.ContentType = "application/json";
             this.RequestBody = new ItemCopyRequestBody();
         }

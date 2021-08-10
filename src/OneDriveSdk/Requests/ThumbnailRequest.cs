@@ -51,7 +51,7 @@ namespace Microsoft.OneDrive.Sdk
         public async Task<Thumbnail> CreateAsync(Thumbnail thumbnailToCreate, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "PUT";
+            this.Method = HttpMethods.PUT;
             var newEntity = await this.SendAsync<Thumbnail>(thumbnailToCreate, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(newEntity);
             return newEntity;
@@ -73,7 +73,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The task to await.</returns>
         public async Task DeleteAsync(CancellationToken cancellationToken)
         {
-            this.Method = "DELETE";
+            this.Method = HttpMethods.DELETE;
             await this.SendAsync<Thumbnail>(null, cancellationToken).ConfigureAwait(false);
         }
 
@@ -93,7 +93,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The Thumbnail.</returns>
         public async Task<Thumbnail> GetAsync(CancellationToken cancellationToken)
         {
-            this.Method = "GET";
+            this.Method = HttpMethods.GET;
             var retrievedEntity = await this.SendAsync<Thumbnail>(null, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(retrievedEntity);
             return retrievedEntity;
@@ -118,7 +118,7 @@ namespace Microsoft.OneDrive.Sdk
         public async Task<Thumbnail> UpdateAsync(Thumbnail thumbnailToUpdate, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "PATCH";
+            this.Method = HttpMethods.PATCH;
             var updatedEntity = await this.SendAsync<Thumbnail>(thumbnailToUpdate, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(updatedEntity);
             return updatedEntity;

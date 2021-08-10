@@ -28,7 +28,7 @@ namespace Microsoft.OneDrive.Sdk
             IEnumerable<Option> options)
             : base(requestUrl, client, options)
         {
-            this.Method = "POST";
+            this.Method = HttpMethods.POST;
             this.ContentType = "application/json";
             this.RequestBody = new ItemInviteRequestBody();
         }
@@ -55,7 +55,7 @@ namespace Microsoft.OneDrive.Sdk
             CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "POST";
+            this.Method = HttpMethods.POST;
             var response = await this.SendAsync<ItemPermissionsCollectionResponse>(this.RequestBody, cancellationToken).ConfigureAwait(false);
             if (response != null && response.Value != null && response.Value.CurrentPage != null)
             {

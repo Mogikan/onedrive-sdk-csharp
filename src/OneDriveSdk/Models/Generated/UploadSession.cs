@@ -12,38 +12,38 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type UploadSession.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<UploadSession>))]
     public partial class UploadSession
     {
     
         /// <summary>
         /// Gets or sets uploadUrl.
         /// </summary>
-        [DataMember(Name = "uploadUrl", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("uploadUrl")]
         public string UploadUrl { get; set; }
     
         /// <summary>
         /// Gets or sets expirationDateTime.
         /// </summary>
-        [DataMember(Name = "expirationDateTime", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("expirationDateTime")]
         public DateTimeOffset? ExpirationDateTime { get; set; }
     
         /// <summary>
         /// Gets or sets nextExpectedRanges.
         /// </summary>
-        [DataMember(Name = "nextExpectedRanges", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("nextExpectedRanges")]
         public IEnumerable<string> NextExpectedRanges { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

@@ -29,8 +29,9 @@ namespace Microsoft.OneDrive.Sdk
             string token)
             : base(requestUrl, client)
         {
-            this.passParametersInQueryString = true;
+            //this.passParametersInQueryString = true;
             this.SetParameter("token", token, true);
+            this.SetFunctionParameters();
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
 
     /// <summary>
@@ -23,13 +24,13 @@ namespace Microsoft.OneDrive.Sdk
         /// <summary>
         /// Gets or sets Name.
         /// </summary>
-        [DataMember(Name = "name", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("name")]
         public string Name { get; set; }
     
         /// <summary>
         /// Gets or sets ParentReference.
         /// </summary>
-        [DataMember(Name = "parentReference", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("parentReference")]
         public ItemReference ParentReference { get; set; }
     
     }

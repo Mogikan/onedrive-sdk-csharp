@@ -9,7 +9,7 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type DriveSharedCollectionResponse.
@@ -20,13 +20,13 @@ namespace Microsoft.OneDrive.Sdk
         /// <summary>
         /// Gets or sets the <see cref="IDriveSharedCollectionPage"/> value.
         /// </summary>
-        [DataMember(Name = "value", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("value")]
         public IDriveSharedCollectionPage Value { get; set; }
 
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     }
 }

@@ -8,12 +8,12 @@
 namespace Microsoft.OneDrive.Sdk
 {
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The interface IDriveRecentCollectionPage.
     /// </summary>
-    [JsonConverter(typeof(InterfaceConverter<DriveRecentCollectionPage>))]
+    [InterfaceConverter(typeof(InterfaceConverter<DriveRecentCollectionPage>))]
     public interface IDriveRecentCollectionPage : ICollectionPage<Item>
     {
         /// <summary>

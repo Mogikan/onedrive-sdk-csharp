@@ -30,8 +30,7 @@ namespace Microsoft.OneDrive.Sdk
             IBaseClient client,
             IEnumerable<Option> options)
             : base(requestUrl, client, options)
-        {
-            this.SdkVersionHeaderPrefix = "onedrive";
+        {            
         }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace Microsoft.OneDrive.Sdk
         public async System.Threading.Tasks.Task<Item> CreateAsync(Item itemToCreate, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "PUT";
+            this.Method = HttpMethods.PUT;
             var newEntity = await this.SendAsync<Item>(itemToCreate, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(newEntity);
             return newEntity;
@@ -75,7 +74,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The task to await.</returns>
         public async System.Threading.Tasks.Task DeleteAsync(CancellationToken cancellationToken)
         {
-            this.Method = "DELETE";
+            this.Method = HttpMethods.DELETE;
             await this.SendAsync<Item>(null, cancellationToken).ConfigureAwait(false);
         }
 
@@ -95,7 +94,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The Item.</returns>
         public async System.Threading.Tasks.Task<Item> GetAsync(CancellationToken cancellationToken)
         {
-            this.Method = "GET";
+            this.Method = HttpMethods.GET;
             var retrievedEntity = await this.SendAsync<Item>(null, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(retrievedEntity);
             return retrievedEntity;
@@ -120,7 +119,7 @@ namespace Microsoft.OneDrive.Sdk
         public async System.Threading.Tasks.Task<Item> UpdateAsync(Item itemToUpdate, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "PATCH";
+            this.Method = HttpMethods.PATCH;
             var updatedEntity = await this.SendAsync<Item>(itemToUpdate, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(updatedEntity);
             return updatedEntity;

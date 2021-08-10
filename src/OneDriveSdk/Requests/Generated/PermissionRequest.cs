@@ -30,8 +30,7 @@ namespace Microsoft.OneDrive.Sdk
             IBaseClient client,
             IEnumerable<Option> options)
             : base(requestUrl, client, options)
-        {
-            this.SdkVersionHeaderPrefix = "onedrive";
+        {            
         }
 
         /// <summary>
@@ -53,7 +52,7 @@ namespace Microsoft.OneDrive.Sdk
         public async System.Threading.Tasks.Task<Permission> CreateAsync(Permission permissionToCreate, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "PUT";
+            this.Method = HttpMethods.PUT;
             var newEntity = await this.SendAsync<Permission>(permissionToCreate, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(newEntity);
             return newEntity;
@@ -75,7 +74,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The task to await.</returns>
         public async System.Threading.Tasks.Task DeleteAsync(CancellationToken cancellationToken)
         {
-            this.Method = "DELETE";
+            this.Method = HttpMethods.DELETE;
             await this.SendAsync<Permission>(null, cancellationToken).ConfigureAwait(false);
         }
 
@@ -95,7 +94,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <returns>The Permission.</returns>
         public async System.Threading.Tasks.Task<Permission> GetAsync(CancellationToken cancellationToken)
         {
-            this.Method = "GET";
+            this.Method = HttpMethods.GET;
             var retrievedEntity = await this.SendAsync<Permission>(null, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(retrievedEntity);
             return retrievedEntity;
@@ -120,7 +119,7 @@ namespace Microsoft.OneDrive.Sdk
         public async System.Threading.Tasks.Task<Permission> UpdateAsync(Permission permissionToUpdate, CancellationToken cancellationToken)
         {
             this.ContentType = "application/json";
-            this.Method = "PATCH";
+            this.Method = HttpMethods.PATCH;
             var updatedEntity = await this.SendAsync<Permission>(permissionToUpdate, cancellationToken).ConfigureAwait(false);
             this.InitializeCollectionProperties(updatedEntity);
             return updatedEntity;

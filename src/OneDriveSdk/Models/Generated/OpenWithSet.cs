@@ -12,32 +12,32 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type OpenWithSet.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<OpenWithSet>))]
     public partial class OpenWithSet
     {
     
         /// <summary>
         /// Gets or sets web.
         /// </summary>
-        [DataMember(Name = "web", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("web")]
         public OpenWithApp Web { get; set; }
     
         /// <summary>
         /// Gets or sets webEmbed.
         /// </summary>
-        [DataMember(Name = "webEmbed", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("webEmbed")]
         public OpenWithApp WebEmbed { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

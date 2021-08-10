@@ -12,50 +12,50 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type SharingInvitation.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<SharingInvitation>))]
     public partial class SharingInvitation
     {
     
         /// <summary>
         /// Gets or sets email.
         /// </summary>
-        [DataMember(Name = "email", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("email")]
         public string Email { get; set; }
     
         /// <summary>
         /// Gets or sets invitedBy.
         /// </summary>
-        [DataMember(Name = "invitedBy", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("invitedBy")]
         public IdentitySet InvitedBy { get; set; }
     
         /// <summary>
         /// Gets or sets signInRequired.
         /// </summary>
-        [DataMember(Name = "signInRequired", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("signInRequired")]
         public bool? SignInRequired { get; set; }
     
         /// <summary>
         /// Gets or sets sendInvitationStatus.
         /// </summary>
-        [DataMember(Name = "sendInvitationStatus", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("sendInvitationStatus")]
         public string SendInvitationStatus { get; set; }
     
         /// <summary>
         /// Gets or sets inviteErrorResolveUrl.
         /// </summary>
-        [DataMember(Name = "inviteErrorResolveUrl", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("inviteErrorResolveUrl")]
         public string InviteErrorResolveUrl { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

@@ -11,33 +11,33 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The type File.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<File>))]
     public partial class File
     {
     
         /// <summary>
         /// Gets or sets hashes.
         /// </summary>
-        [DataMember(Name = "hashes", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("hashes")]
         public Hashes Hashes { get; set; }
     
         /// <summary>
         /// Gets or sets mimeType.
         /// </summary>
-        [DataMember(Name = "mimeType", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("mimeType")]
         public string MimeType { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

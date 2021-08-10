@@ -11,27 +11,27 @@ namespace Microsoft.OneDrive.Sdk
     using System.Collections.Generic;
     using System.IO;
     using System.Runtime.Serialization;
+    using System.Text.Json.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
 
     /// <summary>
     /// The type Folder.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Folder>))]
     public partial class Folder
     {
     
         /// <summary>
         /// Gets or sets childCount.
         /// </summary>
-        [DataMember(Name = "childCount", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("childCount")]
         public Int32? ChildCount { get; set; }
     
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }

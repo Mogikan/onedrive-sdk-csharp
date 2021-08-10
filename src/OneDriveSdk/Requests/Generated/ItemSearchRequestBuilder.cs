@@ -29,8 +29,9 @@ namespace Microsoft.OneDrive.Sdk
             string q)
             : base(requestUrl, client)
         {
-            this.passParametersInQueryString = true;
+            //this.passParametersInQueryString = true;            
             this.SetParameter("q", q, true);
+            this.SetFunctionParameters();
         }
 
         /// <summary>

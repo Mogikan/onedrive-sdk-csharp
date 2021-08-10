@@ -12,56 +12,56 @@ namespace Microsoft.OneDrive.Sdk
     using System.IO;
     using System.Runtime.Serialization;
     using Microsoft.Graph;
-    using Newtonsoft.Json;
+    using System.Text.Json.Serialization;
 
     /// <summary>
     /// The type Permission.
     /// </summary>
     [DataContract]
-    [JsonConverter(typeof(DerivedTypeConverter))]
+    [JsonConverter(typeof(DerivedTypeConverter<Permission>))]
     public partial class Permission
     {
     
         /// <summary>
         /// Gets or sets granted to.
         /// </summary>
-        [DataMember(Name = "grantedTo", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("grantedTo")]
         public IdentitySet GrantedTo { get; set; }
     
         /// <summary>
         /// Gets or sets id.
         /// </summary>
-        [DataMember(Name = "id", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
     
         /// <summary>
         /// Gets or sets invitation.
         /// </summary>
-        [DataMember(Name = "invitation", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("invitation")]
         public SharingInvitation Invitation { get; set; }
     
         /// <summary>
         /// Gets or sets inherited from.
         /// </summary>
-        [DataMember(Name = "inheritedFrom", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("inheritedFrom")]
         public ItemReference InheritedFrom { get; set; }
     
         /// <summary>
         /// Gets or sets link.
         /// </summary>
-        [DataMember(Name = "link", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("link")]
         public SharingLink Link { get; set; }
     
         /// <summary>
         /// Gets or sets roles.
         /// </summary>
-        [DataMember(Name = "roles", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("roles")]
         public IEnumerable<string> Roles { get; set; }
     
         /// <summary>
         /// Gets or sets share id.
         /// </summary>
-        [DataMember(Name = "shareId", EmitDefaultValue = false, IsRequired = false)]
+        [JsonPropertyName("shareId")]
         public string ShareId { get; set; }
     
         /// <summary>
@@ -73,7 +73,7 @@ namespace Microsoft.OneDrive.Sdk
         /// <summary>
         /// Gets or sets additional data.
         /// </summary>
-        [JsonExtensionData(ReadData = true, WriteData = true)]
+        [JsonExtensionData]
         public IDictionary<string, object> AdditionalData { get; set; }
     
     }
