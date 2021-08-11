@@ -5,8 +5,8 @@
 Integrate the [OneDrive API](https://dev.onedrive.com/README.htm) into your C#
 project!
 
-The OneDrive SDK is built as a Portable Class Library and targets the following
-frameworks: 
+The OneDrive SDK is built as a dot net standard Library 2.0 (can be used in .net core and .net 5) and targets the following
+frameworks:
 
 * .NET Standard 2.0
 
